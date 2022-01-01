@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import PageWrapper from "./components/UIElements/PageWrapper";
 import Home from "./pages/Home";
 import ItemDetails from "./pages/ItemDetails";
 
@@ -19,10 +20,12 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/details/:id" element={<ItemDetails />} />
-      </Routes>
+      <PageWrapper>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/details/:id" element={<ItemDetails />} />
+        </Routes>
+      </PageWrapper>
     </BrowserRouter>
   );
 };
