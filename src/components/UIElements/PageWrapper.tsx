@@ -11,7 +11,7 @@ const AppHeader = () => (
         className="mb-3"
       />
 
-      <h1 className="bg-gray-800 rounded-md text-white inline-block text-sm px-2 md:px-3 py-1">
+      <h1 className="bg-secondary rounded-md text-white inline-block text-sm px-2 md:px-3 py-1">
         Frontend Development Challenge
       </h1>
     </Link>
@@ -27,7 +27,7 @@ const AppHeader = () => (
 );
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-[#6317C2] min-h-screen pt-10 md:pt-20">
+  <div className="bg-primary min-h-screen pt-10 md:pt-20">
     <div className="w-10/12 md:w-9/12 mx-auto bg-white p-8 md:p-12 rounded-lg">
       <AppHeader />
 
