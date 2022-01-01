@@ -5,7 +5,7 @@ const ItemDetails = () => {
 
   return (
     <button type="button" onClick={() => push("/")}>
-      Item Details Page
+      Go to Home Page
     </button>
   );
 };
