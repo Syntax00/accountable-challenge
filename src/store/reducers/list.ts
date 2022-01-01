@@ -3,31 +3,22 @@ import actions from "../actions";
 const initialState = {
   loading: false,
   error: null,
-  items: [],
+  list: [],
 };
 
-type initialStateType = {
-  loading: boolean;
-  error: string | null;
-  items: any[];
-};
-
-const listReducer = (
-  state: initialStateType = initialState,
-  action: any = {}
-) => {
+const listReducer = (state: ListStateType = initialState, action: any = {}) => {
   switch (action.type) {
-    case actions.FETCH_LIST_ITEMS:
+    case actions.FETCH_LIST:
       return {
         ...state,
         loading: action.loading,
         error: action.error,
-        items: action.items,
+        list: action.list,
       };
     case actions.REMOVE_ITEM:
       return {
         ...state,
-        items: state.items.filter((item: any) => item.id !== action.item.id),
+        list: state.list.filter((item: any) => item.id !== action.item.id),
       };
     default:
       return state;

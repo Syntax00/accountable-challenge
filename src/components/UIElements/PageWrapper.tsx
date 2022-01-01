@@ -20,14 +20,14 @@ const AppHeader = () => (
       <img
         src={accountableLogo}
         alt="Accountable Logo"
-        className="w-14 rounded-lg hidden md:block"
+        className="w-14 rounded-lg hidden md:block animate-bounce"
       />
     </Link>
   </header>
 );
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-primary min-h-screen pt-10 md:pt-20">
+  <div className="bg-primary min-h-screen py-10 md:py-20">
     <div className="w-10/12 md:w-9/12 mx-auto bg-white p-8 md:p-12 rounded-lg">
       <AppHeader />
 

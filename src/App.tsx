@@ -9,7 +9,9 @@ import ItemDetails from "./pages/ItemDetails";
 import actions from "./store/actions";
 
 const App = () => {
-  const list = useSelector((state: { list: any }) => state.list);
+  const list: ListStateType = useSelector(
+    (state: AppStateType) => state.listState
+  );
   const dispatch = useDispatch();
 
   console.log({ list });

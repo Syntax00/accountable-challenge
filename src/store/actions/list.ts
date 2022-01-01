@@ -1,16 +1,16 @@
 import fetchListData from "../../API_MOCK";
 
-export const FETCH_LIST_ITEMS = "FETCH_LIST_ITEMS";
+export const FETCH_LIST = "FETCH_LIST";
 export const REMOVE_ITEM = "REMOVE_ITEM";
 
-export const fetchListItems = (items: any[], error: any, loading: boolean) => ({
-  type: FETCH_LIST_ITEMS,
-  items,
+export const fetchListItems = (list: ListType, error: any, loading: boolean) => ({
+  type: FETCH_LIST,
+  list,
   error,
   loading,
 });
 
-export const removeItem = (item: any) => ({
+export const removeItem = (item: ListItemType) => ({
   type: REMOVE_ITEM,
   item,
 });
