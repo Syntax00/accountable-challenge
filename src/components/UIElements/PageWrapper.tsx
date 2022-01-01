@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import accountableLogo from "../../assets/accountable_logo.jpeg";
 
 const AppHeader = () => (
-  <header className="flex justify-between items-start">
+  <header className="flex justify-between items-start bg-gray-50 p-8 md:p-12">
     <Link to="/" className="block">
       <img
         src="https://www.accountable.eu/wp-content/themes/accountable/assets/images/accountable-logo.svg"
@@ -28,12 +28,12 @@ const AppHeader = () => (
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   <div className="bg-primary min-h-screen py-10 md:py-20">
-    <div className="w-10/12 md:w-9/12 mx-auto bg-white p-8 md:p-12 rounded-lg">
+    <div className="w-10/12 md:w-9/12 mx-auto bg-white rounded-lg shadow-2xl overflow-hidden">
       <AppHeader />
 
-      <div className="w-full border border-gray-100 my-7" />
+      <div className="w-full border border-gray-100" />
 
-      {children}
+      <div className="p-8 md:p-12">{children}</div>
     </div>
   </div>
 );

@@ -6,6 +6,9 @@ module.exports = {
         primary: "#6317C2",
         secondary: "#222222",
       },
+      transitionProperty: {
+        width: "width",
+      },
     },
   },
   plugins: [],
