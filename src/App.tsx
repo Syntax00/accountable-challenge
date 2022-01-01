@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
 
+import Home from "./pages/Home";
 import ItemDetails from "./pages/ItemDetails";
 
 import actions from "./store/actions";
@@ -14,13 +14,7 @@ const App = () => {
   console.log({ list });
 
   useEffect(() => {
-    dispatch(
-      actions.fetchListItems(
-        ["1", "2", "3", "4"],
-        "something went so wrong",
-        true
-      )
-    );
+    dispatch(actions.getList());
   }, [dispatch]);
 
   return (
