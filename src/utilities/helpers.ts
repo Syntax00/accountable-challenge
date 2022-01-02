@@ -31,6 +31,7 @@ const flattenNestedList = (list: ListType): ListType => {
     listItems.forEach((item) => {
       if (item.list) {
         const { list, ...rest } = item;
+        
         result.push(rest);
         flatten(list, result);
       } else {

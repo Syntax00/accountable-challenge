@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 import SectionTitle from "../components/SectionTitle";
 import ListLoadingSkeleton from "../components/UIElements/Skeletons/ListLoadingSkeleton";
-import actions from "../store/actions";
 
 import useTreeGenerator from "../utilities/custom-hooks";
 
