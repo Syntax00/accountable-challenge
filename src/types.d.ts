@@ -5,6 +5,8 @@ type ListItemType = {
   list?: ListType;
   displayName?: string;
   question?: string;
+  __id__?: string;
+  __pId__?: string | null;
 };
 
 type ListStateType = {
