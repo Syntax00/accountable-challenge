@@ -1,5 +1,5 @@
 import fetchListData from "../../API_MOCK";
-import { assignUniqueIDs, flattenNestedList } from "../../helpers";
+import { assignUniqueIDs, flattenNestedList } from "../../utilities/helpers";
 
 export const FETCH_LIST = "FETCH_LIST";
 export const REMOVE_ITEM = "REMOVE_ITEM";

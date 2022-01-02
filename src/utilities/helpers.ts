@@ -30,7 +30,9 @@ const flattenNestedList = (list: ListType): ListType => {
   const flatten = (listItems: ListType, result: ListType) => {
     listItems.forEach((item) => {
       if (item.list) {
-        flatten(item.list, result);
+        const { list, ...rest } = item;
+        result.push(rest);
+        flatten(list, result);
       } else {
         result.push(item);
       }
@@ -42,4 +44,38 @@ const flattenNestedList = (list: ListType): ListType => {
   return flattened;
 };
 
-export { assignUniqueIDs, flattenNestedList };
+function buildTreeStructure(list: ListType = []) {
+  const _list = _cloneDeep(list);
+
+  return function treeBuilder(parent: ListItemType) {
+    const childList = _list.filter(
+      (item: ListItemType) => item.__pId__ === parent.__id__
+    );
+    const itemWithChildList = {
+      ...parent,
+      list: childList,
+    };
+
+    itemWithChildList.list.forEach((child: ListItemType) => {
+      child.list = [...treeBuilder(child).list];
+    });
+
+    return itemWithChildList;
+  };
+}
+
+const getParentsItems = (list: ListType = []) =>
+  list.filter((item: ListItemType) => !item.__pId__);
+
+const searchItems = (list: ListType, search: string): ListType =>
+  list.filter((item: ListItemType) =>
+    item.title.toLowerCase().includes(search.toLowerCase())
+  );
+
+export {
+  assignUniqueIDs,
+  flattenNestedList,
+  buildTreeStructure,
+  getParentsItems,
+  searchItems,
+};
