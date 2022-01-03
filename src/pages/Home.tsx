@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
+import ParentItemCard from "../components/ParentItemCard/ParentItemCard";
 import SectionTitle from "../components/SectionTitle";
 import ListLoadingSkeleton from "../components/UIElements/Skeletons/ListLoadingSkeleton";
 
-import useTreeGenerator from "../utilities/custom-hooks";
+import { useTreeGenerator } from "../utilities/custom-hooks";
 
 const Home = () => {
   const { loading, error, list }: ListStateType = useSelector(
     (state: AppStateType) => state.listState
   );
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const listTree = useTreeGenerator(list, searchTerm);
+  const listDataTree = useTreeGenerator(list, searchTerm);
 
   if (loading) return <ListLoadingSkeleton />;
 
@@ -25,8 +26,8 @@ const Home = () => {
         value={searchTerm}
       />
 
-      {listTree.map((item: ListItemType) => (
-        <h1 key={item.__id__}>{item.title}</h1>
+      {listDataTree.map((item: ListItemType) => (
+        <ParentItemCard key={item.__id__} item={item} />
       ))}
     </section>
   );

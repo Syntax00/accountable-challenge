@@ -31,8 +31,8 @@ const flattenNestedList = (list: ListType): ListType => {
     listItems.forEach((item) => {
       if (item.list) {
         const { list, ...rest } = item;
-        
-        result.push(rest);
+
+        result.push(rest); // Push the item data and exclude the children "list"
         flatten(list, result);
       } else {
         result.push(item);
@@ -45,7 +45,7 @@ const flattenNestedList = (list: ListType): ListType => {
   return flattened;
 };
 
-function buildTreeStructure(list: ListType = []) {
+const buildTreeStructure = (list: ListType = []) => {
   const _list = _cloneDeep(list);
 
   return function treeBuilder(parent: ListItemType) {
@@ -63,9 +63,9 @@ function buildTreeStructure(list: ListType = []) {
 
     return itemWithChildList;
   };
-}
+};
 
-const getParentsItems = (list: ListType = []) =>
+const getParentsItems = (list: ListType = []): ListType =>
   list.filter((item: ListItemType) => !item.__pId__);
 
 const searchItems = (list: ListType, search: string): ListType =>

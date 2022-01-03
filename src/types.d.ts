@@ -20,3 +20,14 @@ type AppStateType = {
 };
 
 type ListType = ListItemType[];
+
+type Primitive = string | boolean | number | bigint | symbol | null | undefined;
+
+type NonPrimitive = object;
+
+type unaryFunction = (x: Primitive | NonPrimitive) => Primitive | NonPrimitive;
+
+type binaryFunction = (
+  x: Primitive | NonPrimitive,
+  y: Primitive | NonPrimitive
+) => MainDataTypes;
