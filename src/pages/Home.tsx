@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import ParentItemCard from "../components/ParentItemCard/ParentItemCard";
@@ -17,17 +17,18 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const listDataTree = useTreeGenerator(list, searchTerm);
 
+  const shuffle = useCallback(
+    () => dispatch(actions.shuffleList()),
+    [dispatch]
+  );
+
   if (loading) return <ListLoadingSkeleton />;
 
   return (
     <section>
       <SectionTitle
         ExtraControllers={
-          <CircularIconButton
-            icon="random"
-            theme="gray"
-            onClick={() => dispatch(actions.shuffleList())}
-          />
+          <CircularIconButton icon="random" theme="gray" onClick={shuffle} />
         }
       >
         Currently Available Items
