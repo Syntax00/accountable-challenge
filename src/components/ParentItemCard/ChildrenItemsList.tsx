@@ -16,7 +16,8 @@ const SubList = ({
   firstLevel?: boolean;
 }) => {
   const { title, description, list = [] } = item;
-  const { showList, hasChildList, clickAction } = useListItemProps(item);
+  const { showList, hasChildList, clickAction, canViewDetails } =
+    useListItemProps(item);
 
   const listUI = list.map((subItem: ListItemType) => (
     <SubList item={subItem} key={subItem.__id__} />
@@ -36,7 +37,7 @@ const SubList = ({
 
         <p className="bg-white hover:bg-gray-50 px-10 py-5 pl-10 transition-padding duration-300 shadow-lightShadow mb-4 text-base w-full font-bold rounded-full hover:pl-20">
           {title}
-          
+
           {description ? (
             <span className="font-medium text-gray-600 mx-3 text-sm">
               ({description})
@@ -51,7 +52,13 @@ const SubList = ({
         </p>
 
         <Tooltip
-          text={hasChildList ? "Expand the list" : "Click to view the details"}
+          text={
+            hasChildList
+              ? "Expand the list"
+              : canViewDetails
+              ? "Click to view the details"
+              : ""
+          }
         />
       </button>
 

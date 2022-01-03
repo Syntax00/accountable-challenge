@@ -35,3 +35,9 @@ type binaryFunction = (
 interface IObjectKeys {
   [key: string]: Primitive | NonPrimitive;
 }
+
+type BreadcrumbLinkType = {
+  label: string;
+  url: string;
+  icon?: string;
+};

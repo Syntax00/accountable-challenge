@@ -1,6 +1,7 @@
 import _shuffle from "lodash/shuffle";
 
 import actions from "../actions";
+import { removeItemById } from "../../utilities/helpers";
 
 const initialState = {
   loading: false,
@@ -20,7 +21,7 @@ const listReducer = (state: ListStateType = initialState, action: any = {}) => {
     case actions.REMOVE_ITEM:
       return {
         ...state,
-        list: state.list.filter((item: any) => item.id !== action.item.id),
+        list: removeItemById(state.list, action.id),
       };
     case actions.SHUFFLE_LIST:
       return {

@@ -75,10 +75,23 @@ const searchItems = (list: ListType, search: string): ListType =>
     item.title.toLowerCase().includes(search.toLowerCase())
   );
 
+// TO BE UNIT-TESTED
+const getItemById = (
+  list: ListType,
+  id: string | undefined
+): ListItemType | undefined =>
+  list.find((item: ListItemType) => item.id === id);
+
+// TO BE UNIT-TESTED
+const removeItemById = (list: ListType, id: string) =>
+  list.filter((item: any) => item.id !== id);
+
 export {
   assignUniqueIDs,
   flattenNestedList,
   buildTreeStructure,
   getParentsItems,
   searchItems,
+  getItemById,
+  removeItemById,
 };

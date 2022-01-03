@@ -16,7 +16,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const listDataTree = useTreeGenerator(list, searchTerm);
-
+  
   const shuffle = useCallback(
     () => dispatch(actions.shuffleList()),
     [dispatch]

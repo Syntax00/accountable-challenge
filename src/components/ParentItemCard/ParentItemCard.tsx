@@ -13,7 +13,8 @@ const getItemAbbreviation = (title: string): string =>
     .toUpperCase();
 
 const ParentItemCard = ({ item }: { item: ListItemType }) => {
-  const { showList, hasChildList, clickAction } = useListItemProps(item);
+  const { showList, hasChildList, canViewDetails, clickAction } =
+    useListItemProps(item);
   const { title, description, list = [] } = item;
 
   const abbrev = getItemAbbreviation(title);
@@ -35,7 +36,9 @@ const ParentItemCard = ({ item }: { item: ListItemType }) => {
           </div>
 
           <CircularIconButton
-            icon={hasChildList ? "angle-down" : "angle-right"}
+            icon={
+              hasChildList ? "angle-down" : canViewDetails ? "angle-right" : ""
+            }
           />
         </div>
       </button>

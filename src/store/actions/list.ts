@@ -16,9 +16,9 @@ export const fetchListItems = (
   loading,
 });
 
-export const removeItem = (item: ListItemType) => ({
+export const removeItem = (id: string) => ({
   type: REMOVE_ITEM,
-  item,
+  id,
 });
 
 export const shuffleList = () => ({

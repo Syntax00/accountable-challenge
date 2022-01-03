@@ -13,21 +13,23 @@ const useTreeGenerator = (list: ListType, search: string) =>
   }, [list, search]);
 
 const useListItemProps = (item: ListItemType) => {
-  const { id, list } = item;
-  const hasChildList = !id && list && list.length > 0;
-
   const [showList, toggleList] = useState<boolean>(false);
+
+  const { id, list } = item;
+  const hasChildList = list && list.length > 0;
+  const canViewDetails = id && !hasChildList;
+
   const push = useNavigate();
 
   const clickAction = useCallback(
     () =>
-      hasChildList
-        ? toggleList((prevState) => !prevState)
-        : push(`/details/${id}`),
-    [hasChildList, id, push]
+      canViewDetails
+        ? push(`/details/${id}`)
+        : toggleList((prevState) => !prevState),
+    [canViewDetails, id, push]
   );
 
-  return { showList, hasChildList, clickAction };
+  return { showList, hasChildList, canViewDetails, clickAction };
 };
 
 export { useTreeGenerator, useListItemProps };
