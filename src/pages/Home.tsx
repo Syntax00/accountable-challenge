@@ -25,7 +25,7 @@ const Home = () => {
         ExtraControllers={
           <CircularIconButton
             icon="random"
-            className="bg-gray-100"
+            theme="gray"
             onClick={() => dispatch(actions.shuffleList())}
           />
         }

@@ -21,7 +21,7 @@ type AppStateType = {
 
 type ListType = ListItemType[];
 
-type Primitive = string | boolean | number | bigint | symbol | null | undefined;
+type Primitive = string | boolean | number | null | undefined;
 
 type NonPrimitive = object;
 
@@ -31,3 +31,7 @@ type binaryFunction = (
   x: Primitive | NonPrimitive,
   y: Primitive | NonPrimitive
 ) => MainDataTypes;
+
+interface IObjectKeys {
+  [key: string]: Primitive | NonPrimitive;
+}

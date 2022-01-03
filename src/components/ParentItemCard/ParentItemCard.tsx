@@ -28,7 +28,7 @@ const ParentItemCard = ({ item }: { item: ListItemType }) => {
           <span className="font-bold text-secondary">{abbrev}</span>
         </div>
 
-        <div className="flex w-full items-start justify-between relative">
+        <div className="flex w-full items-start justify-between relative pr-4">
           <div>
             <h1 className="text-xl font-bold">{title}</h1>
             <p className="text-sm">{description}</p>
