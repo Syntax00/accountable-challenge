@@ -65,9 +65,11 @@ const buildTreeStructure = (list: ListType = []) => {
   };
 };
 
+// TO BE UNIT-TESTED
 const getParentsItems = (list: ListType = []): ListType =>
   list.filter((item: ListItemType) => !item.__pId__);
 
+// TO BE UNIT-TESTED
 const searchItems = (list: ListType, search: string): ListType =>
   list.filter((item: ListItemType) =>
     item.title.toLowerCase().includes(search.toLowerCase())

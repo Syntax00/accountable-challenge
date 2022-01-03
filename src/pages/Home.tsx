@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ParentItemCard from "../components/ParentItemCard/ParentItemCard";
 import SectionTitle from "../components/SectionTitle";
 import CircularIconButton from "../components/UIElements/CircularIconButton";
-import ListLoadingSkeleton from "../components/UIElements/Skeletons/ListLoadingSkeleton";
+import ListLoadingSkeleton from "../components/UIElements/Skeletons/ListSkeleton";
 
 import actions from "../store/actions";
 import { useTreeGenerator } from "../utilities/custom-hooks";
@@ -25,7 +25,7 @@ const Home = () => {
   if (loading) return <ListLoadingSkeleton />;
 
   return (
-    <section>
+    <main>
       <SectionTitle
         ExtraControllers={
           <CircularIconButton icon="random" theme="gray" onClick={shuffle} />
@@ -43,7 +43,7 @@ const Home = () => {
       {listDataTree.map((item: ListItemType) => (
         <ParentItemCard key={item.__id__} item={item} />
       ))}
-    </section>
+    </main>
   );
 };
 
