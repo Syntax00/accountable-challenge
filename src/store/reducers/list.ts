@@ -1,3 +1,5 @@
+import _shuffle from "lodash/shuffle";
+
 import actions from "../actions";
 
 const initialState = {
@@ -19,6 +21,11 @@ const listReducer = (state: ListStateType = initialState, action: any = {}) => {
       return {
         ...state,
         list: state.list.filter((item: any) => item.id !== action.item.id),
+      };
+    case actions.SHUFFLE_LIST:
+      return {
+        ...state,
+        list: _shuffle(state.list),
       };
     default:
       return state;

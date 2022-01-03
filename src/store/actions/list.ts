@@ -3,6 +3,7 @@ import { assignUniqueIDs, flattenNestedList } from "../../utilities/helpers";
 
 export const FETCH_LIST = "FETCH_LIST";
 export const REMOVE_ITEM = "REMOVE_ITEM";
+export const SHUFFLE_LIST = "SHUFFLE_LIST";
 
 export const fetchListItems = (
   list: ListType,
@@ -18,6 +19,10 @@ export const fetchListItems = (
 export const removeItem = (item: ListItemType) => ({
   type: REMOVE_ITEM,
   item,
+});
+
+export const shuffleList = () => ({
+  type: SHUFFLE_LIST,
 });
 
 export const getList = () => {

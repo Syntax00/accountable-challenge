@@ -1,16 +1,19 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import ParentItemCard from "../components/ParentItemCard/ParentItemCard";
 import SectionTitle from "../components/SectionTitle";
+import CircularIconButton from "../components/UIElements/CircularIconButton";
 import ListLoadingSkeleton from "../components/UIElements/Skeletons/ListLoadingSkeleton";
 
+import actions from "../store/actions";
 import { useTreeGenerator } from "../utilities/custom-hooks";
 
 const Home = () => {
   const { loading, error, list }: ListStateType = useSelector(
     (state: AppStateType) => state.listState
   );
+  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState<string>("");
   const listDataTree = useTreeGenerator(list, searchTerm);
 
@@ -18,7 +21,17 @@ const Home = () => {
 
   return (
     <section>
-      <SectionTitle>Currently Available Items</SectionTitle>
+      <SectionTitle
+        ExtraControllers={
+          <CircularIconButton
+            icon="random"
+            className="bg-gray-100"
+            onClick={() => dispatch(actions.shuffleList())}
+          />
+        }
+      >
+        Currently Available Items
+      </SectionTitle>
 
       <input
         type="text"
