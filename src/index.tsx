@@ -8,6 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 import store from "./store/store";
 
 import "./index.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
   <React.StrictMode>

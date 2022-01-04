@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import Breadcrumbs from "../components/Breadcrumbs";
 import CircularIconButton from "../components/UIElements/CircularIconButton";
@@ -22,8 +23,9 @@ const ItemDetails = () => {
   const remove = useCallback(
     (modalHandler) => () => {
       dispatch(actions.removeItem(id));
+      toast.success("Items has been successfully deleted!");
       push("/");
-
+      
       return modalHandler(false);
     },
     [dispatch, push, id]

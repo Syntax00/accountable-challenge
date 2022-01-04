@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import PageWrapper from "./components/UIElements/PageWrapper";
 import Home from "./pages/Home";
@@ -28,6 +29,8 @@ const App = () => {
           <Route path="/details/:id" element={<ItemDetails />} />
         </Routes>
       </PageWrapper>
+      
+      <ToastContainer position="bottom-right" />
     </BrowserRouter>
   );
 };
