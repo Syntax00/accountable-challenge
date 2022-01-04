@@ -23,9 +23,9 @@ const ItemDetails = () => {
   const remove = useCallback(
     (modalHandler) => () => {
       dispatch(actions.removeItem(id));
-      toast.success("Items has been successfully deleted!");
+      toast.success("Item has been successfully deleted!");
       push("/");
-      
+
       return modalHandler(false);
     },
     [dispatch, push, id]

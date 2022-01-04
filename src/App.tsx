@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import PageWrapper from "./components/UIElements/PageWrapper";
+import PageLayout from "./components/PageLayout";
 import Home from "./pages/Home";
 import ItemDetails from "./pages/ItemDetails";
 
@@ -23,12 +23,12 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <PageWrapper>
+      <PageLayout>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/details/:id" element={<ItemDetails />} />
         </Routes>
-      </PageWrapper>
+      </PageLayout>
       
       <ToastContainer position="bottom-right" />
     </BrowserRouter>
