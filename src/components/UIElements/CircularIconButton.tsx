@@ -1,7 +1,8 @@
 const themes: IObjectKeys = {
-  gray: "bg-gray-100 text-secondary",
-  white: "bg-white text-secondary",
-  danger: "bg-gray-50 text-red-500 shadow-lg",
+  gray: "bg-gray-50 text-secondary hover:bg-gray-100",
+  white: "bg-white text-secondary hover:bg-gray-50",
+  danger:
+    "bg-gray-50 text-red-500 shadow-lg hover:bg-red-500 hover:text-white transition-colors",
 };
 
 const CircularIconButton = ({

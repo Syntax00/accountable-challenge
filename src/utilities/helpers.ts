@@ -59,10 +59,14 @@ const getParentsItems = (list: ListType = []): ListType =>
   list.filter(({ __pId__ }: ListItemType) => !__pId__);
 
 // TO BE UNIT-TESTED
-const searchItems = (list: ListType, search: string): ListType =>
-  list.filter(({ searchableText }: ListItemType) =>
-    new RegExp(search.toLowerCase()).test(searchableText.toLowerCase())
-  );
+const searchInString =
+  (term: string = "") =>
+  ({ searchableText }: ListItemType): boolean =>
+    new RegExp(term.toLowerCase()).test(searchableText.toLowerCase());
+
+// TO BE UNIT-TESTED
+const searchItems = (list: ListType = [], search: string = ""): ListType =>
+  list.filter(searchInString(search));
 
 // TO BE UNIT-TESTED
 const getItemById = (
@@ -118,4 +122,5 @@ export {
   getChildrenSearchableText,
   getItemSearchableText,
   appendSearchableTextsToList,
+  searchInString,
 };

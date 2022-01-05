@@ -26,12 +26,14 @@ type Primitive = string | boolean | number | null | undefined;
 
 type NonPrimitive = object;
 
-type unaryFunction = (x: Primitive | NonPrimitive) => Primitive | NonPrimitive;
+type unaryFunction = (
+  x: Primitive | NonPrimitive
+) => Primitive | NonPrimitive | void;
 
 type binaryFunction = (
   x: Primitive | NonPrimitive,
   y: Primitive | NonPrimitive
-) => MainDataTypes;
+) => Primitive | NonPrimitive | void;
 
 interface IObjectKeys {
   [key: string]: Primitive | NonPrimitive;

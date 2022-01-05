@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 import { buildTreeStructure, getParentsItems, searchItems } from "./helpers";
 
-const useTreeGenerator = (list: ListType, search: string) =>
+const useTreeGenerator = (list: ListType, searchTerm: string) =>
   useMemo(() => {
-    const listWithSearch = search ? searchItems(list, search) : list;
+    const listWithSearch = searchTerm ? searchItems(list, searchTerm) : list;
 
     return getParentsItems(listWithSearch).map((parent) =>
       buildTreeStructure(list)(parent)
     );
-  }, [list, search]);
+  }, [list, searchTerm]);
 
 const useListItemProps = (item: ListItemType) => {
   const [showList, toggleList] = useState<boolean>(false);
