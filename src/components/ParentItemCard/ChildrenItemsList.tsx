@@ -4,7 +4,7 @@ import { useListItemProps } from "../../utilities/custom-hooks";
 
 const ListItemIcon = ({ name }: { name: string }) => (
   <i
-    className={`w-5 h-5 mr-5 rounded-sm text-secondary flex justify-center items-center fa fa-${name}`}
+    className={`hidden w-5 h-5 mr-5 rounded-sm text-secondary md:flex justify-center items-center fa fa-${name}`}
   />
 );
 
@@ -24,7 +24,7 @@ const SubList = ({
   ));
 
   return (
-    <div className={firstLevel ? "" : "ml-20"}>
+    <div className={firstLevel ? "" : "ml-4 mr-4 md:ml-20 md:mr-0"}>
       <button
         className="flex w-full text-left items-center relative group"
         onClick={clickAction}
@@ -35,11 +35,11 @@ const SubList = ({
           <ListItemIcon name="chain" />
         )}
 
-        <p className="bg-white hover:bg-gray-50 px-10 py-5 pl-10 transition-padding duration-300 shadow-lightShadow mb-4 text-base w-full font-bold rounded-full hover:pl-20">
+        <p className="bg-white hover:bg-gray-50 px-6 py-5 md:px-10 transition-padding duration-300 shadow-lightShadow mb-4 text-base w-full font-bold rounded-lg md:rounded-full hover:pl-20">
           {title}
 
           {description ? (
-            <span className="font-medium text-gray-600 mx-3 text-sm">
+            <span className="font-medium text-gray-600 mx-3 text-sm hidden md:inline">
               ({description})
             </span>
           ) : null}

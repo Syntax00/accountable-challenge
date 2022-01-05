@@ -12,7 +12,9 @@ type ListItemType = {
 
 type ListStateType = {
   loading: boolean;
-  error: string | null;
+  error: {
+    message: string | null;
+  } | null;
   list: ListItemType[];
 };
 

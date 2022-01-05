@@ -6,6 +6,7 @@ import ParentItemCard from "../components/ParentItemCard/ParentItemCard";
 import SearchBar from "../components/SearchBar";
 import SectionTitle from "../components/SectionTitle";
 import CircularIconButton from "../components/UIElements/CircularIconButton";
+import FeedbackMessage from "../components/UIElements/FeedbackMessage";
 import ListLoadingSkeleton from "../components/UIElements/Skeletons/ListSkeleton";
 
 import actions from "../store/actions";
@@ -27,6 +28,10 @@ const Home = () => {
   );
 
   if (loading) return <ListLoadingSkeleton />;
+  if (error)
+    return (
+      <FeedbackMessage message={error.message || "Something went wrong!"} />
+    );
 
   return (
     <main>
@@ -39,12 +44,16 @@ const Home = () => {
           </div>
         }
       >
-        Currently Available Items
+        Available List Items
       </SectionTitle>
 
-      {listDataTree.map((item: ListItemType) => (
-        <ParentItemCard key={item.__id__} item={item} />
-      ))}
+      {listDataTree.length > 0 ? (
+        listDataTree.map((item: ListItemType) => (
+          <ParentItemCard key={item.__id__} item={item} />
+        ))
+      ) : (
+        <FeedbackMessage message="No Data Found" />
+      )}
     </main>
   );
 };

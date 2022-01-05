@@ -27,13 +27,13 @@ const AppHeader = () => (
 );
 
 const PageLayout = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-gradient-to-r from-primary to-yellow-400 min-h-screen py-10 md:py-10">
-    <div className="w-10/12 md:w-9/12 mx-auto bg-white rounded-lg shadow-2xl overflow-hidden">
+  <div className="bg-gradient-to-r from-primary to-yellow-400 min-h-screen py-5 md:py-10">
+    <div className="w-11/12 md:w-9/12 mx-auto bg-white rounded-lg shadow-2xl overflow-hidden">
       <AppHeader />
 
       <div className="w-full border border-gray-100" />
 
-      <div className="p-8 md:p-12">{children}</div>
+      <div className="p-8 px-6 md:p-12 md:px-12">{children}</div>
     </div>
   </div>
 );

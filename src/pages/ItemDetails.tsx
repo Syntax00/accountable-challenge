@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 import Breadcrumbs from "../components/Breadcrumbs";
 import CircularIconButton from "../components/UIElements/CircularIconButton";
+import FeedbackMessage from "../components/UIElements/FeedbackMessage";
 import Modal from "../components/UIElements/Modal";
 import SimpleButton from "../components/UIElements/SimpleButton";
 import DetailsSkeleton from "../components/UIElements/Skeletons/DetailsSkeleton";
@@ -32,22 +33,30 @@ const ItemDetails = () => {
   );
 
   if (loading) return <DetailsSkeleton />;
+  if (error)
+    return (
+      <FeedbackMessage message={error.message || "Something went wrong!"} />
+    );
 
   const item: ListItemType | undefined = getItemById(list, id);
 
   return (
     <main>
-      <div className="mb-10 flex justify-between items-center">
-        <Breadcrumbs
-          links={[
-            { label: "Home", url: "/", icon: "home" },
-            { label: item?.title || "", url: `/details/${id}` },
-          ]}
-        />
+      <div className="mb-5 md:mb-10 flex justify-between items-center flex-col-reverse md:flex-row">
+        <div className="w-full md:w-auto items-start">
+          <Breadcrumbs
+            links={[
+              { label: "Home", url: "/", icon: "home" },
+              { label: item?.title || "", url: `/details/${id}` },
+            ]}
+          />
+        </div>
 
         <Modal
           Triggerer={({ open }: { open: unaryFunction }) => (
-            <CircularIconButton icon="trash" theme="danger" onClick={open} />
+            <div className="self-end mb-4">
+              <CircularIconButton icon="trash" theme="danger" onClick={open} />
+            </div>
           )}
           Body={() => (
             <p>
@@ -71,8 +80,12 @@ const ItemDetails = () => {
       </div>
 
       <div>
-        <h1 className="text-4xl mb-2">{item?.title}</h1>
+        <h1 className="text-3xl mb-2 md:text-4xl">{item?.title}</h1>
         <p>{item?.description}</p>
+
+        <div className="mt-10">
+          <FeedbackMessage message="Item Details Goes Here" />
+        </div>
       </div>
     </main>
   );

@@ -112,6 +112,15 @@ const appendSearchableTextsToList = (list: ListType) =>
     };
   });
 
+// TO BE UNIT-TESTED
+const getItemAbbreviation = (title: string): string =>
+  title
+    .split(" ")
+    .map((word) => word[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+
 export {
   transformDataIntoFlatTreeStructure,
   buildTreeStructure,
@@ -123,4 +132,5 @@ export {
   getItemSearchableText,
   appendSearchableTextsToList,
   searchInString,
+  getItemAbbreviation,
 };
