@@ -112,8 +112,7 @@ const appendSearchableTextsToList = (list: ListType) =>
     };
   });
 
-// TO BE UNIT-TESTED
-const getItemAbbreviation = (title: string): string =>
+const getItemAbbreviation = (title: string = ""): string =>
   title
     .split(" ")
     .map((word) => word[0])
