@@ -1,48 +1,37 @@
 import { v4 as uuidv4 } from "uuid";
 import _cloneDeep from "lodash/cloneDeep";
 
-const assignUniqueIDs = (list: ListType): ListType => {
+const transformDataIntoFlatTreeStructure = (
+  originalList: ListType
+): ListType => {
   // Clone the original list into a copy to avoid mutating the original array
-  const _list = _cloneDeep(list);
+  const _list = _cloneDeep(originalList);
 
-  // Assign unique ids and parentIds to form a Tree Data Structure using __id__ > __pId__ relationship
-  const assign = (listItems: ListType, parentId: string | null): void => {
+  // Final flattened array of list items with __id__ and __pId__ relationship
+  const flattenedList: ListType = [];
+
+  const flattenWithIDs = (
+    listItems: ListType,
+    parentId: string | null
+  ): void => {
     listItems.forEach((item: ListItemType) => {
+      // Assign unique ids and parentIds to form a Tree Data Structure using __id__ > __pId__ relationship
       item.__id__ = uuidv4();
       item.__pId__ = parentId;
 
-      if (item.list && item.list.length > 0) {
-        assign(item.list, item.__id__);
+      const { list, ...rest } = item;
+
+      flattenedList.push(rest);
+
+      if (list && list.length > 0) {
+        flattenWithIDs(list, item.__id__);
       }
     });
   };
 
-  assign(_list, null);
+  flattenWithIDs(_list, null);
 
-  return _list;
-};
-
-const flattenNestedList = (list: ListType): ListType => {
-  const _list = _cloneDeep(list);
-  const flattened: ListType = []; // Final flattened array
-
-  // Recurse over the original nested data structure and flatten it into a flat list
-  const flatten = (listItems: ListType, result: ListType) => {
-    listItems.forEach((item) => {
-      if (item.list) {
-        const { list, ...rest } = item;
-
-        result.push(rest); // Push the item data and exclude the children "list"
-        flatten(list, result);
-      } else {
-        result.push(item);
-      }
-    });
-  };
-
-  flatten(_list, flattened);
-
-  return flattened;
+  return flattenedList;
 };
 
 const buildTreeStructure = (list: ListType = []) => {
@@ -87,8 +76,7 @@ const removeItemById = (list: ListType, id: string) =>
   list.filter((item: any) => item.id !== id);
 
 export {
-  assignUniqueIDs,
-  flattenNestedList,
+  transformDataIntoFlatTreeStructure,
   buildTreeStructure,
   getParentsItems,
   searchItems,
