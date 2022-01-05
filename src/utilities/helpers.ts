@@ -78,8 +78,10 @@ const getItemById = (
 const removeItemById = (list: ListType, id: string) =>
   list.filter((item: ListItemType) => item.id !== id);
 
-const getItemSearchableText = ({ title, description }: ListItemType) =>
-  `${title} ${description}`;
+const getItemSearchableText = ({
+  title = "",
+  description = "",
+}: ListItemType) => `${title} ${description}`;
 
 const getChildrenSearchableText = (id: string | undefined, list: ListType) => {
   let children: string[] = [];

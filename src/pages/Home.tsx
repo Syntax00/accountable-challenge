@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
+import queryString from "query-string";
 
 import ParentItemCard from "../components/ParentItemCard/ParentItemCard";
 import SearchBar from "../components/SearchBar";
@@ -19,7 +20,7 @@ const Home = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
 
-  const search = searchParams.toString().split("=")[1];
+  const { search }: any = queryString.parse(searchParams.toString());
   const listDataTree = useTreeGenerator(list, search);
 
   const shuffle = useCallback(

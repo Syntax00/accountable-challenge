@@ -1,6 +1,32 @@
 import { describe, expect, it } from "@jest/globals";
 
-import { searchInString } from "../utilities/helpers";
+import { getItemSearchableText, searchInString } from "../utilities/helpers";
+
+describe("Generate Item Searchable Text Function", () => {
+  it("should return an empty string when provided with empty values values as parameters and doesn't crash", () => {
+    const inputItem = {
+      title: "",
+      description: "",
+      searchableText: "",
+    };
+    const searchableTextOutput = getItemSearchableText(inputItem);
+
+    expect(searchableTextOutput).toContain("");
+  });
+
+  it("should return the correct concatenation of item title and description as searchable text", () => {
+    const inputItem = {
+      title: "Styrian Coarse-haired Hound",
+      description: "A Styrian Coarse-haired Hound likes Stage And Screen",
+      searchableText: "",
+    };
+    const searchableTextOutput = getItemSearchableText(inputItem);
+
+    expect(searchableTextOutput).toContain(
+      "Styrian Coarse-haired Hound A Styrian Coarse-haired Hound likes Stage And Screen"
+    );
+  });
+});
 
 describe("Search in String with a Term Function", () => {
   const searchItemInput = {
@@ -14,6 +40,7 @@ describe("Search in String with a Term Function", () => {
 
     expect(searchResult).toBe(true);
   });
+
   it("should match when provided with a term that is included in the item searchable text", () => {
     const termInput = "scogne li";
     const searchResult = searchInString(termInput)(searchItemInput);
