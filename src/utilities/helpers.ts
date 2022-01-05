@@ -5,7 +5,7 @@ const transformDataIntoFlatTreeStructure = (
   originalList: ListType
 ): ListType => {
   // Clone the original list into a copy to avoid mutating the original array
-  const _list = _cloneDeep(originalList);
+  const list = _cloneDeep(originalList);
 
   // Final flattened array of list items with __id__ and __pId__ relationship
   const flattenedList: ListType = [];
@@ -29,7 +29,7 @@ const transformDataIntoFlatTreeStructure = (
     });
   };
 
-  flattenWithIDs(_list, null);
+  flattenWithIDs(list, null);
 
   return flattenedList;
 };
@@ -56,12 +56,12 @@ const buildTreeStructure = (list: ListType = []) => {
 
 // TO BE UNIT-TESTED
 const getParentsItems = (list: ListType = []): ListType =>
-  list.filter((item: ListItemType) => !item.__pId__);
+  list.filter(({ __pId__ }: ListItemType) => !__pId__);
 
 // TO BE UNIT-TESTED
 const searchItems = (list: ListType, search: string): ListType =>
-  list.filter((item: ListItemType) =>
-    item.title.toLowerCase().includes(search.toLowerCase())
+  list.filter(({ searchableText }: ListItemType) =>
+    new RegExp(search.toLowerCase()).test(searchableText.toLowerCase())
   );
 
 // TO BE UNIT-TESTED
@@ -73,7 +73,40 @@ const getItemById = (
 
 // TO BE UNIT-TESTED
 const removeItemById = (list: ListType, id: string) =>
-  list.filter((item: any) => item.id !== id);
+  list.filter((item: ListItemType) => item.id !== id);
+
+const getItemSearchableText = ({ title, description }: ListItemType) =>
+  `${title} ${description}`;
+
+const getChildrenSearchableText = (id: string | undefined, list: ListType) => {
+  let children: string[] = [];
+
+  list
+    .filter(({ __pId__ }: ListItemType) => __pId__ === id)
+    .forEach((child: ListItemType) => {
+      children.push(getItemSearchableText(child));
+
+      children = children.concat(getChildrenSearchableText(child.__id__, list));
+    });
+
+  return children;
+};
+
+const appendSearchableTextsToList = (list: ListType) =>
+  list.map((item: ListItemType) => {
+    if (item.__pId__)
+      return { ...item, searchableText: getItemSearchableText(item) };
+
+    const parentNodeSearchableText = [
+      getItemSearchableText(item), // Parent's own title
+      ...getChildrenSearchableText(item.__id__, list), // Parent's children titles
+    ].join(" ");
+
+    return {
+      ...item,
+      searchableText: parentNodeSearchableText,
+    };
+  });
 
 export {
   transformDataIntoFlatTreeStructure,
@@ -82,4 +115,7 @@ export {
   searchItems,
   getItemById,
   removeItemById,
+  getChildrenSearchableText,
+  getItemSearchableText,
+  appendSearchableTextsToList,
 };

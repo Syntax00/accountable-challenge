@@ -7,6 +7,7 @@ type ListItemType = {
   question?: string;
   __id__?: string;
   __pId__?: string | null;
+  searchableText: string;
 };
 
 type ListStateType = {
