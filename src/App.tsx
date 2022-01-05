@@ -1,13 +1,15 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import PageLayout from "./components/PageLayout";
-import Home from "./pages/Home";
-import ItemDetails from "./pages/ItemDetails";
+import DetailsSkeleton from "./components/UIElements/Skeletons/DetailsSkeleton";
 
 import actions from "./store/actions";
+
+const Home = lazy(() => import("./pages/Home"));
+const ItemDetails = lazy(() => import("./pages/ItemDetails"));
 
 const App = () => {
   const list: ListStateType = useSelector(
@@ -24,12 +26,14 @@ const App = () => {
   return (
     <BrowserRouter>
       <PageLayout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/details/:id" element={<ItemDetails />} />
-        </Routes>
+        <Suspense fallback={<DetailsSkeleton />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/details/:id" element={<ItemDetails />} />
+          </Routes>
+        </Suspense>
       </PageLayout>
-      
+
       <ToastContainer position="bottom-right" />
     </BrowserRouter>
   );

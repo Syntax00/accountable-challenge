@@ -1,5 +1,5 @@
-import ChildList from "./ChildrenItemsList";
 import CircularIconButton from "../UIElements/CircularIconButton";
+import ChildrenItemsList from "./ChildrenItemsList";
 
 import { useListItemProps } from "../../utilities/custom-hooks";
 
@@ -45,7 +45,7 @@ const ParentItemCard = ({ item }: { item: ListItemType }) => {
 
       {hasChildList && showList ? (
         <div className="bg-gray-50 p-10 pl-14 rounded-b-lg mb-2">
-          <ChildList list={list} />
+          <ChildrenItemsList list={list} />
         </div>
       ) : null}
     </div>
