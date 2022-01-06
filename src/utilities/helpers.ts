@@ -66,7 +66,6 @@ const searchInString =
 const searchItems = (list: ListType = [], search: string = ""): ListType =>
   list.filter(searchInString(search));
 
-// TO BE UNIT-TESTED
 const getItemById = (
   list: ListType,
   id: string | undefined
