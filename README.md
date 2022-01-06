@@ -15,7 +15,7 @@ npm run build
 serve -s build
 ```
 
-In order to run the unit tests that exists inside the `__test__` directory, run the following command:
+In order to run the unit tests that exist inside the `__test__` directory, run the following command:
 
 ```javascript
 npm test
