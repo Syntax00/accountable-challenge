@@ -1,7 +1,5 @@
 # Accountable Frontend Challenge 
-<p align="center"> 
-<img src="https://web.accountable.eu/logo-large@2x.png?b43f96fdefe6d415dfbd63ee70743e0a" style="width: 50%">
-</p>
+
 
 ## Used Technologies & Libraries
 1. React.js (create-react-app)
