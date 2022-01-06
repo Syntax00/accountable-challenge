@@ -2,7 +2,7 @@
 
 # Installation
 The project is built using create-react-app with TypeScript template to initialize the React.js ecosystem.
-So, it's simple to get the project up and running, by simply by installing the required NPM packages and then start the server for development:
+So, it's simple to get the project up and running, by simply installing the required NPM packages and then start the server for development:
 ```javascript
 npm i
 npm start
