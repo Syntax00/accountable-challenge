@@ -1,7 +1,5 @@
-import _shuffle from "lodash/shuffle";
-
 import actions from "../actions";
-import { removeItemById } from "../../utilities/helpers";
+import { removeItemById, shuffleList } from "../../utilities/helpers";
 
 const initialState = {
   loading: false,
@@ -26,7 +24,7 @@ const listReducer = (state: ListStateType = initialState, action: any = {}) => {
     case actions.SHUFFLE_LIST:
       return {
         ...state,
-        list: _shuffle(state.list),
+        list: shuffleList(state.list),
       };
     default:
       return state;

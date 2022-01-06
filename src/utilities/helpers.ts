@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import _cloneDeep from "lodash/cloneDeep";
+import _shuffle from "lodash/shuffle";
 
 const transformDataIntoFlatTreeStructure = (
   originalList: ListType
@@ -117,6 +118,8 @@ const getItemAbbreviation = (title: string = ""): string =>
     .join("")
     .toUpperCase();
 
+const shuffleList = (list: ListType = []) => _shuffle(list);
+
 export {
   transformDataIntoFlatTreeStructure,
   buildTreeStructure,
@@ -129,4 +132,5 @@ export {
   appendSearchableTextsToList,
   searchInString,
   getItemAbbreviation,
+  shuffleList,
 };
