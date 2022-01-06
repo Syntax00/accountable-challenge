@@ -44,6 +44,7 @@ Then, press 'a'.
 4. Shuffle list items into random orders
 5. Search in items by their own searchableText (title + description) and their childrens' searchableText
 6. Delete a leaf item from the list and show a notification message upon successful deletion
+7. Fully responsive UI
 
 ## Project Structure
 ```javascript
