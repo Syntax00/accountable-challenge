@@ -9,13 +9,15 @@ const CircularIconButton = ({
   icon,
   onClick = () => null,
   theme,
+  type = "button",
 }: {
   icon: string;
   onClick?: unaryFunction;
   theme?: string;
+  type?: "button" | "submit" | "reset" | undefined;
 }) =>
   icon ? (
-    <button type="button" onClick={onClick}>
+    <button type={type} onClick={onClick}>
       <i
         className={`w-10 h-10 rounded-full fa fa-${icon} flex justify-center items-center text-2xl ${
           theme ? themes[theme] : themes.white
