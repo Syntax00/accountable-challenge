@@ -60,7 +60,7 @@ const getParentsItems = (list: ListType = []): ListType =>
 
 const searchInString =
   (term: string = "") =>
-  ({ searchableText }: ListItemType): boolean =>
+  ({ searchableText = "" }: ListItemType): boolean =>
     searchableText.toLowerCase().includes(term.toLowerCase());
 
 const searchItems = (list: ListType = [], search: string = ""): ListType =>
@@ -100,8 +100,8 @@ const appendSearchableTextsToList = (list: ListType) =>
       return { ...item, searchableText: getItemSearchableText(item) };
 
     const parentNodeSearchableText = [
-      getItemSearchableText(item), // Parent's own title
-      ...getChildrenSearchableText(item.__id__, list), // Parent's children titles
+      getItemSearchableText(item), // Parent's own searchableText
+      ...getChildrenSearchableText(item.__id__, list), // Parent's children searchableTexts
     ].join(" ");
 
     return {

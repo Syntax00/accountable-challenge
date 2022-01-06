@@ -22,7 +22,7 @@ const SearchBar = () => {
     >
       <input
         type="text"
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={({ target: { value } }) => setSearchTerm(value)}
         value={searchTerm}
         className="bg-gray-50 ml-2 border border-transparent rounded-full outline-none flex-1 py-3 px-5 text-sm hover:pl-10 active:pl-10 focus:pl-10 hover:border-yellow-400 active:border-yellow-400 focus:border-yellow-400 transition-padding"
         placeholder="Search term.."

@@ -38,7 +38,7 @@ const Home = () => {
     <main>
       <SectionTitle
         ExtraControllers={
-          <div className="flex">
+          <div className="flex items-center">
             <CircularIconButton icon="random" theme="gray" onClick={shuffle} />
 
             <SearchBar />

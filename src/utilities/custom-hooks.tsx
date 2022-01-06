@@ -14,12 +14,11 @@ const useTreeGenerator = (list: ListType, searchTerm: string = "") =>
 
 const useListItemProps = (item: ListItemType) => {
   const [showList, toggleList] = useState<boolean>(false);
+  const push = useNavigate();
 
   const { id, list } = item;
   const hasChildList = list && list.length > 0;
   const canViewDetails = id && !hasChildList;
-
-  const push = useNavigate();
 
   const clickAction = useCallback(
     () =>

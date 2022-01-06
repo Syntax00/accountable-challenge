@@ -24,10 +24,10 @@ const ItemDetails = () => {
   const remove = useCallback(
     (modalHandler) => () => {
       dispatch(actions.removeItem(id));
-      toast.success("Item has been successfully deleted!");
+      modalHandler(false);
       push("/");
 
-      return modalHandler(false);
+      return toast.success("Item has been successfully deleted!");
     },
     [dispatch, push, id]
   );
@@ -60,8 +60,8 @@ const ItemDetails = () => {
           )}
           Body={() => (
             <p>
-              Are you sure you want to delete this item{" "}
-              <span className="italic">({item?.title})</span>?
+              Are you sure you want to delete this item
+              <span className="italic"> ({item?.title})</span>?
             </p>
           )}
           Footer={({ modalHandler }: { modalHandler: unaryFunction }) => (

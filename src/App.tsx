@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
@@ -12,12 +12,7 @@ const Home = lazy(() => import("./pages/Home"));
 const ItemDetails = lazy(() => import("./pages/ItemDetails"));
 
 const App = () => {
-  const list: ListStateType = useSelector(
-    (state: AppStateType) => state.listState
-  );
   const dispatch = useDispatch();
-
-  console.log({ list });
 
   useEffect(() => {
     dispatch(actions.getList());
