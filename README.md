@@ -74,7 +74,7 @@ serve -s build
         |-- helpers.ts (functionalities and utilities used and composed across the application)
 -- API_MOCK.ts (mocking the static list data JSON happens here as a Promise function)
 -- types.d.ts (includes the reusable Types used across the application)
--- App.tsx
+-- App.tsx (routes handling and fetching data happens in this file)
 -- index.tsx
 -- ...
 ```
