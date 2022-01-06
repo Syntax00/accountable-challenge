@@ -54,7 +54,6 @@ const buildTreeStructure = (list: ListType = []) => {
   };
 };
 
-// TO BE UNIT-TESTED
 const getParentsItems = (list: ListType = []): ListType =>
   list.filter(({ __pId__ }: ListItemType) => !__pId__);
 
