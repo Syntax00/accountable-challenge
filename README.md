@@ -3,6 +3,7 @@
 # Installation
 The project is built using create-react-app with TypeScript template to initialize the React.js ecosystem.
 So, it's simple to get the project up and running, by simply installing the required dependencies and packages, then start the server for development:
+
 ```javascript
 npm i
 npm start
@@ -14,6 +15,13 @@ npm run build
 serve -s build
 ```
 
+In order to run the unit tests that exists inside the __test__ directory, run the following command:
+
+```javascript
+npm test
+```
+
+Then, press 'a'.
 
 ## Used Technologies, Third-party Packages, and Libraries 
 1. React.js (create-react-app)
@@ -23,7 +31,7 @@ serve -s build
 5. redux-thunk
 6. React Router V6
 7. Lodash
-8. uuid
+8. uuid (To assign unique __ids__ and __pIds__ to format proper Tree Data Structure)
 9. query-string (For parsing query strings for list search purposes)
 10. react-toastify (For feedback notifications)
 11. Jest (For Unit testing)
