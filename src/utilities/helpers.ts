@@ -63,7 +63,6 @@ const searchInString =
   ({ searchableText }: ListItemType): boolean =>
     searchableText.toLowerCase().includes(term.toLowerCase());
 
-// TO BE UNIT-TESTED
 const searchItems = (list: ListType = [], search: string = ""): ListType =>
   list.filter(searchInString(search));
 
