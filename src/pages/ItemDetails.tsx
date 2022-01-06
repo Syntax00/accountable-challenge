@@ -42,7 +42,7 @@ const ItemDetails = () => {
 
   return (
     <main>
-      <div className="mb-5 md:mb-10 flex justify-between items-center flex-col-reverse md:flex-row">
+      <div className="mb-5 md:mb-6 flex justify-between items-center flex-col-reverse md:flex-row">
         <div className="w-full md:w-auto items-start">
           <Breadcrumbs
             links={[

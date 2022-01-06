@@ -1,7 +1,7 @@
 import CircularIconButton from "../UIElements/CircularIconButton";
 import ChildrenItemsList from "./ChildrenItemsList";
 
-import { useListItemProps } from "../../utilities/custom-hooks";
+import useListItemProps from "../../hooks/useListItemProps";
 import { getItemAbbreviation } from "../../utilities/helpers";
 
 const ParentItemCard = ({ item }: { item: ListItemType }) => {

@@ -1,6 +1,6 @@
 import Tooltip from "../UIElements/Tooltip";
 
-import { useListItemProps } from "../../utilities/custom-hooks";
+import useListItemProps from "../../hooks/useListItemProps";
 
 const ListItemIcon = ({ name }: { name: string }) => (
   <i

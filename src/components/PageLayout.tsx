@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 
-import accountableLogo from "../assets/accountable_logo.jpeg";
-
 const AppHeader = () => (
   <header className="flex justify-between items-start bg-gray-50 p-8 md:p-12">
     <Link to="/" className="block">
@@ -18,7 +16,7 @@ const AppHeader = () => (
 
     <Link to="/">
       <img
-        src={accountableLogo}
+        src="/images/accountable_logo.jpeg"
         alt="Accountable Logo"
         className="w-14 rounded-lg hidden md:block "
       />

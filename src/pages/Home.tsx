@@ -11,7 +11,7 @@ import FeedbackMessage from "../components/UIElements/FeedbackMessage";
 import ListLoadingSkeleton from "../components/UIElements/Skeletons/ListSkeleton";
 
 import actions from "../store/actions";
-import { useTreeGenerator } from "../utilities/custom-hooks";
+import useTreeGenerator from "../hooks/useTreeGenerator";
 
 const Home = () => {
   const { loading, error, list }: ListStateType = useSelector(
