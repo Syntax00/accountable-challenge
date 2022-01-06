@@ -35,3 +35,45 @@ serve -s build
 4. Shuffle list items into random orders
 5. Search in items by their own searchableText (title + description) and their childrens' searchableText
 6. Delete a leaf item from the list and show a notification message upon successful deletion
+
+## Project Structure
+```javascript
+-- __tests__ (contains the unit testing files structured by functionality)
+        |-- search.test.ts
+        |-- ...
+-- components (contains all the components being utilized and composed to form the features)
+        |- ParentItemCard
+                |- ParentItemCard.tsx
+                |- ChildrenItemsList.tsx
+        |- PageLayout.tsx
+        |- SearchBar.tsx
+        |- ...
+        |- UIElements
+                |- Skeletons
+                        |- ListSkeleton.tsx
+                        |- ...
+                |- CircularIconButton.tsx
+                |- Modal.tsx
+                |- ...
+-- hooks (contains all the custom reusable React Hooks)
+        |- useListItemProps.ts
+        |- useTreeGenerator.ts
+-- pages (application pages/routes)
+        |-- Home.tsx
+        |-- ItemDetails.tsx
+-- store (includes Redux configurations and components)
+        |-- actions
+                |-- list.ts
+                |-- index.ts
+        |-- reducers
+                |-- list.ts
+                |-- index.ts (reducers combination happens here)
+        |-- store.ts
+-- utilities
+        |-- helpers.ts (functionalities and utilities used and composed across the application)
+-- API_MOCK.ts (mocking the static list data JSON happens here as a Promise function)
+-- types.d.ts (includes the reusable Types used across the application)
+-- App.tsx
+-- index.tsx
+-- ...
+```
