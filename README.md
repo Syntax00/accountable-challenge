@@ -31,7 +31,7 @@ Then, press 'a'.
 5. redux-thunk
 6. React Router V6
 7. Lodash
-8. uuid (To assign unique `__ids__` and `__pIds__` to format proper Tree Data Structure)
+8. uuid (To assign unique `__ids__` and `__pIds__` to form a proper Tree Data Structure)
 9. query-string (For parsing query strings for list search purposes)
 10. react-toastify (For feedback notifications)
 11. Jest (For Unit testing)
