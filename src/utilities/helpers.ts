@@ -72,8 +72,7 @@ const getItemById = (
 ): ListItemType | undefined =>
   list.find((item: ListItemType) => item.id === id);
 
-// TO BE UNIT-TESTED
-const removeItemById = (list: ListType, id: string) =>
+const removeItemById = (list: ListType = [], id: string = "") =>
   list.filter((item: ListItemType) => item.id !== id);
 
 const getItemSearchableText = ({

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "@jest/globals";
 
-import { getItemById } from "../utilities/helpers";
+import { getItemById, removeItemById } from "../utilities/helpers";
 
 const inputList = [
   {
@@ -53,5 +53,36 @@ describe("Find Item with ID Functionality", () => {
     const inputID = "test-nonexistent-id";
 
     expect(getItemById(inputList, inputID)).toBeUndefined();
+  });
+});
+
+describe("Remove Item from List Functionality", () => {
+  it("should not remove from or change the list when an invalid ID is provided", () => {
+    const inputID = "invalid-id";
+    const output = inputList;
+
+    expect(removeItemById(inputList, inputID)).toStrictEqual(output);
+  });
+
+  it("should return an empty array and does not crash when provided with nothing/undefined as list", () => {
+    const inputID = "invalid-id";
+    const output: [] = [];
+
+    expect(removeItemById(undefined, inputID)).toEqual(output);
+  });
+
+  it("should remove the item from the list when the ID is valid and exists in the list", () => {
+    const inputID = "e2144a3b-bf2f-4eef-adc6-ffa2f10a6c7f";
+    const output = inputList.length - 1;
+
+    expect(removeItemById(inputList, inputID)).toHaveLength(output);
+  });
+
+  it("should not include the removed item in the list no more", () => {
+    const inputID = "e2144a3b-bf2f-4eef-adc6-ffa2f10a6c7f";
+
+    expect(
+      getItemById(removeItemById(inputList, inputID), inputID)
+    ).toBeUndefined();
   });
 });
