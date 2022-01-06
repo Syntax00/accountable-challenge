@@ -52,9 +52,9 @@ describe("Generate Item Searchable Text Function", () => {
       description: "",
       searchableText: "",
     };
-    const output = "";
+    const output = " ";
 
-    expect(getItemSearchableText(inputItem)).toContain(output);
+    expect(getItemSearchableText(inputItem)).toBe(output);
   });
 
   it("should return the correct concatenation of item title and description as searchable text", () => {
