@@ -1,7 +1,21 @@
 # Accountable Frontend Challenge 
 
+# Installation
+The project is built using create-react-app with TypeScript template to initialize the React.js ecosystem.
+So, it's simple to get the project up and running, by simply by installing the required NPM packages and then start the server for development:
+```javascript
+npm i
+npm start
+```
+To build and run it for production:
+```javascript
+npm i
+npm run build
+serve -s build
+```
 
-## Used Technologies & Libraries
+
+## Used Technologies, Third-party Packages, and Libraries 
 1. React.js (create-react-app)
 2. TypeScript
 3. TailwindCSS (For making UI and responsiveness faster, cleaner, and easier)
@@ -14,19 +28,6 @@
 10. react-toastify (For feedback notifications)
 11. Jest (For Unit testing)
 
-
-# Installation
-The project is built using create-react-app with TypeScript template. To install and run it for development:
-```javascript
-npm i
-npm start
-```
-To build and run it for production:
-```javascript
-npm i
-npm run build
-serve -s build
-```
 
 ## Implemented Features
 1. Listing items in a tree nested structure (using Recursive Tree Data Structure)
