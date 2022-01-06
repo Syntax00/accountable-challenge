@@ -27,3 +27,11 @@ npm i
 npm run build
 serve -s build
 ```
+
+## Implemented Features
+1. Listing items in a tree nested structure (using Recursive Tree Data Structure)
+2. Expanding to view children lists
+3. View details of leaves items (items with no children lists and own an id)
+4. Shuffle list items into random orders
+5. Search in items by their own searchableText (title + description) and their childrens' searchableText
+6. Delete a leaf item from the list and show a notification message upon successful deletion
